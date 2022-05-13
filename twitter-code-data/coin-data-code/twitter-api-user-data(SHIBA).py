@@ -27,11 +27,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
-#user tweets
-#user = '@cex_io'
-#limit=1000
 
-#tweets = tweepy.Cursor(api.user_timeline, screen_name=user, count=200, tweet_mode='extended').items(limit)
 csvheader =['User','Tweet']
 #search tweets
 keywords = 'Shiba Inu'
@@ -49,16 +45,11 @@ for tweet in tweets:
     
      data.append([today, tweet.user.screen_name, tweet.full_text])
 
-   # data.append([tweet.user.screen_name, tweet.full_text])
 
 df = pd.DataFrame(data, columns=columns)
-#with open('twitter-doge-shib-data.csv','w',encoding='UTF8', newline='') as f:
- #   writer = csv.writer(f)
-  #  writer.writerow(csvheader)
-   # writer.writerows(tweets)
+
 
 
 print(df)
 df.to_csv('shiba' + today + '.csv')
 df.to_csv('data-clensing.csv', mode='a', header=False)
-#df.to_csv('shiba.csv')
